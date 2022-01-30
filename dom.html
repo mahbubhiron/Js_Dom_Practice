@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Dom</title>
+    <style>
+        body{
+            width: 50%;
+            margin: auto;
+            text-align: center;
+            padding-top: 10px;
+            padding-bottom: 10px;
+
+        }
+        h2{
+            padding: 5px;
+            border: 2px solid rgba(38, 202, 5, 0.945);
+            border-radius: 50px ;
+            background-color: darkslategrey;
+            width: 60%;
+            text-align: center;
+            margin: auto;
+            color: white;
+            font-family: cursive;
+        }
+        h3{
+            font-size: 20px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        .underline{
+            text-decoration-line: underline;
+            text-decoration-style: wavy;
+            text-decoration-color: rgb(55, 0, 255);
+        }
+        p{
+            text-align: justify;
+        }
+        article{
+            border-bottom: 5px solid gray;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section>
+            <h2>Exploring DOM</h2>
+            <article class="special" id="first-article">
+                <h3><u class="underline">article-1</u></h3>
+                <p class="author">author-1</p>
+                <p class="description1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur, doloremque excepturi repellat odit fugit voluptatibus at nostrum est molestiae eligendi modi. Unde, omnis! Sit deserunt reprehenderit corporis? Unde, quia maiores!</p>
+            </article>
+            <article>
+                <h3><u class="underline">article-2</u></h3>
+                <p class="author">author-2</p>
+                <p class="description2">Perspiciatis officia quaerat dolor incidunt, corrupti sequi autem error labore fugiat placeat aut dolore officiis consequuntur, fuga esse. Temporibus id rerum laudantium. Excepturi, quas repudiandae exercitationem provident vero ipsam neque.</p>
+            </article>
+            <article>
+                <h3><u class="underline">article-3</u></h3>
+                <p class="author">author-3</p>
+                <p class="description3">Consectetur illo aspernatur, nemo ducimus non error, veritatis provident beatae a facere est quaerat at repellendus harum. Optio accusamus omnis est, porro, asperiores nisi dolorem quidem eos sint, libero rem.</p>
+            </article>
+            <article>
+                <h3><u class="underline">Grocery_Shop</u></h3>
+                <ul id="u">
+                    <li>Gift item -1</li>
+                    <li>Gift item -2</li>
+                    <li>Gift item -3</li>
+                    <li>Gift item -4</li>
+                    <li>Gift item -5</li>
+                </ul>
+            </article>
+        </section>
+    </main>
+    <script>
+        // Add attributes and CSS by className
+        var authors = document.getElementsByClassName('author');
+        for(var i = 0;i<authors.length;i++){
+            var element = authors[i];
+            element.setAttribute('title','I ama the original author of '+(i+1));
+            if(i<1){
+                element.style.color='green';
+                element.style.fontSize='20px'
+                element.innerHTML='Author '+(i+1)
+            }else if(i<2){
+                element.style.color='red';
+                element.style.fontSize='20px'
+                element.innerHTML='Author '+(i+1)
+            }else if(i<3){
+                element.style.color='blue';
+                element.style.fontSize='20px'
+                element.innerHTML='Author '+(i+1)
+                element.style.border='2px solid green';
+                element.style.padding='10px';
+                element.style.width='40%';
+                element.style.margin='auto';
+                element.style.marginTop='5px';
+            }
+            else{
+                console.log('nay')
+            }
+        }
+        // Add new tag with some value by ID
+        var article = document.getElementById('first-article');// select ID
+        var newParagraph = document.createElement('p');// create a p tag
+        newParagraph.innerHTML='I am the new child of this article';// Append p Tag with value inside article as child
+        article.appendChild(newParagraph);// Now set the p tag with value inside article 
+        newParagraph.style.color='white';
+        newParagraph.style.backgroundColor='black';
+        newParagraph.style.padding='10px'
+        newParagraph.style.textAlign='center';
+        newParagraph.style.fontSize='20px';
+
+        // Add new LI inside UL
+        var selectUl=document.getElementById('u');
+        var newLi=document.createElement('li');
+        newLi.innerHTML="Gift item -$";
+        selectUl.appendChild(newLi);
+
+    </script>
+</body>
+</html>
