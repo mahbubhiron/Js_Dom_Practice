@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>buble action</title>
+</head>
+<body>
+    <div id="f-1">
+        <h3><u>My List</u></h3>
+        <ul id="ul-1" style="list-style: none;">
+            <li id="list-1">list -1
+                <ul id="ul-2" style="display: none;">
+                    <li>new li list -1</li>
+                    <li>new li list -2</li>
+                </ul>
+            </li>
+            <li id="li-2">list -2</li>
+            <li>list -3</li>
+        </ul>
+    </div>
+    <div id="second-div">
+        <h2>Second item list :</h2>
+        <ul id="itemList-2">
+            <li class="item">item list -01</li>
+            <li class="item">item list -02</li>
+            <li class="item">item list -03</li>
+            <li class="item">item list -04</li>
+            <li class="item">item list -05</li>
+        </ul>
+        <button id="addNew">Add new item..!</button>
+    </div>
+    <script>
+        //bouble problem
+        document.getElementById('ul-1').addEventListener('click',function(){
+            console.log("click first ul...!");
+        })
+
+        var li=document.getElementById('list-1');
+        li.addEventListener('click',function(){
+            var ul=document.getElementById('ul-2');
+            ul.style.display="block";
+            console.log("click first li...!");
+            event.stopPropagation();// stop bubble ,parent element gula bubble hobe na..! 
+        });
+        li.addEventListener('mouseleave',function(){
+            var ul=document.getElementById('ul-2');
+            ul.style.display="none";
+            ul.style.listStyle="none";
+            console.log("click first li...!");
+            event.stopPropagation();// stop bubble ,parent element gula bubble hobe na..! 
+        });
+
+
+        // create Action for remove elements
+        // var item = document.getElementsByClassName('item');
+        // for (let i = 0; i < item.length; i++) {
+        //     const items = item[i];
+        //     items.addEventListener('click',function(event){
+        //         // console.log(this, event.target.innerText);
+        //         event.target.parentNode.removeChild(event.target);
+        //     })  
+        // }
+
+
+        // create a action for Add new item
+
+        document.getElementById('addNew').addEventListener('click',function(event){
+            var selectItemParent = document.getElementById('itemList-2');
+            var createNewItem = document.createElement('li');
+            createNewItem.innerText="Brand new item -$";
+            selectItemParent.appendChild(createNewItem);
+        });
+
+        document.getElementById('itemList-2').addEventListener('click',function(event){
+            // console.log(this,event.target);
+            event.target.parentNode.removeChild(event.target);
+        })
+    </script>
+</body>
+</html>

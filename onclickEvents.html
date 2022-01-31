@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onclick Event</title>
+</head>
+<body>
+    <div id="area1">
+        <h3>Explore Onclick Event</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, odio.</p>
+        <button id="btn-1" onclick="document.body.style.backgroundColor='tomato';">click me 1</button>
+        <button id="btn-2">click me 2</button>
+        <button id="btn-3">click me 3</button>
+    </div>
+    <script>
+        //add event with the id of button
+
+        // var id = document.getElementById('btn-2');
+        // id.addEventListener('click',eOnclick);
+        // function eOnclick(){
+        //     document.body.style.color='green';
+        // }
+
+
+        // another way to add event with the button by using id with anonymus function
+
+        // document.getElementById('btn-3').addEventListener('click',function(){
+        //     document.body.style.color='yellow';
+        // });
+
+        
+        // antoher way to add event with the all of button
+        var btn = document.getElementsByTagName('button');
+        for(var i =0;i<btn.length;i++){
+            if(i<1){
+                btn[i].addEventListener('click',function(){
+                    document.body.style.color='white';
+                });
+            }else if(i<2){
+                btn[i].addEventListener('click',function(){
+                    document.body.style.backgroundColor='purple';
+                    document.body.style.color='black';
+                });
+            }else if(i<3){
+                btn[i].addEventListener('click',function(){
+                    document.body.style.backgroundColor='green';
+                    document.body.style.color='yellow';
+                });
+            }
+        }
+    </script>
+</body>
+</html>
